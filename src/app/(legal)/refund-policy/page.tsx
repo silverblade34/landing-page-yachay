@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Refund Policy - Paddle Web Payments Starter",
+  title: "Refund Policy - Yachay IA",
   description: "Refund Policy",
 };
 

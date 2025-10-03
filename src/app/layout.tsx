@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Paddle Web Payments Starter",
-  description: "A vercel template for taking web payments for mobile apps with Paddle",
+  title: "Yachay IA",
+  description: "La primera app que usa IA para crear pruebas personalizadas infinitas",
 };
 
 export default function RootLayout({

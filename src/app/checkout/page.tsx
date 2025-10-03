@@ -5,7 +5,7 @@ import { Environments } from "@paddle/paddle-js";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Checkout - Paddle Web Payments Starter",
+  title: "Checkout - Yachay IA",
   description: "Complete your purchase securely",
 };
 

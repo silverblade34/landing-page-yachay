@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - Paddle Web Payments Starter",
+  title: "Privacy Policy - Yachay IA",
   description: "Privacy Policy",
 };
 

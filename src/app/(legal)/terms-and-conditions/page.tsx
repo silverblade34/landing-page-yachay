@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions - Paddle Web Payments Starter",
+  title: "Terms and Conditions - Yachay IA",
   description: "Terms and Conditions",
 };
 

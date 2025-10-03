@@ -4,7 +4,7 @@ import { RadialBlur } from "@/components/pricing/radial-blur";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pricing - Paddle Web Payments Starter",
+  title: "Pricing - Yachay IA",
   description: "Unlock Scam Protection, VPN, and more",
 };
 

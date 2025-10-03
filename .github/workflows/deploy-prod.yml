@@ -2,7 +2,7 @@ name: Deploy Landing to Production
 
 on:
   push:
-    branches: [ prod ]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             # Navegar al directorio del proyecto
-            cd /var/.yachay/landing-yachay
+            cd /var/.yachay/landing-page-yachay
             
             # Detener los contenedores actuales
             podman-compose down || true
@@ -30,7 +30,7 @@ jobs:
             
             # Hacer pull de los últimos cambios
             git fetch origin
-            git reset --hard origin/prod
+            git reset --hard origin/main
             
             # Limpiar imágenes viejas para liberar espacio
             podman image prune -f

@@ -1,0 +1,50 @@
+name: Deploy Landing to Production
+
+on:
+  push:
+    branches: [ prod ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
+            # Navegar al directorio del proyecto
+            cd /var/.yachay/landing-yachay
+            
+            # Detener los contenedores actuales
+            podman-compose down || true
+            
+            # Limpiar redes problemáticas de Podman
+            podman network prune -f || true
+            
+            # Hacer pull de los últimos cambios
+            git fetch origin
+            git reset --hard origin/prod
+            
+            # Limpiar imágenes viejas para liberar espacio
+            podman image prune -f
+            
+            # Construir y levantar los contenedores
+            podman-compose build --no-cache
+            podman-compose up -d
+            
+            # Esperar unos segundos para que el servicio inicie
+            sleep 10
+            
+            # Verificar que el contenedor esté corriendo
+            podman ps
+            
+            # Verificar conectividad interna
+            echo "Verificando conectividad..."
+            curl -f http://localhost:3000 --max-time 10 || echo "⚠️ Service may still be starting..."
